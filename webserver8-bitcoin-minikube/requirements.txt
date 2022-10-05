@@ -1,0 +1,4 @@
+requests
+fastapi
+fastapi_utils
+uvicorn

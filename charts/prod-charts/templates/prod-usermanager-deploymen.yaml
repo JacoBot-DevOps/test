@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+
+kind: Deployment
+
+metadata:
+  name: usermanager-deployment
+  namespace: prod-usermanager
+  labels:
+    type: restapi
+
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: usermanager-app
+  template:
+    metadata:
+      name: usermanager-app-template
+      labels:
+        app: usermanager-app
+    spec:
+      containers:
+        - name: usermanager-app-container
+          image: jacobot1/usermanager-app:2.1
+          ports:
+            - containerPort: 6002

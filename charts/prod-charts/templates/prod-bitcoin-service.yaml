@@ -1,0 +1,16 @@
+apiVersion: v1
+
+kind: Service
+
+metadata:
+  name: bitcoin-service
+  namespace: prod-bitcoin
+
+spec:
+  type: LoadBalancer
+  ports:
+    - protocol: "TCP"
+      port: 9001
+      targetPort: 6001
+  selector:
+    app: bitcoin-app

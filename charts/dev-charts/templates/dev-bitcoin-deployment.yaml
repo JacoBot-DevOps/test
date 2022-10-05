@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+
+kind: Deployment
+
+metadata:
+  name: bitcoin-deployment
+  namespace: dev-bitcoin
+  labels:
+    type: restapi
+
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: bitcoin-app
+  template:
+    metadata:
+      name: bitcoin-app-template
+      labels:
+        app: bitcoin-app
+    spec:
+      containers:
+        - name: bitcoin-app-container
+          image: jacobot1/bitcoin-app:2.1
+          ports:
+            - containerPort: 6001
